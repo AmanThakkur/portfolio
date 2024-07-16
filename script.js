@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header.card');
     const cards = document.querySelectorAll('.card');
+    const headerContent = header.querySelector('.header-content');
     
-    // Header animation
     setTimeout(() => {
         header.style.opacity = '1';
         header.style.transform = 'translateY(0)';
+        headerContent.style.opacity = '1';
+        headerContent.style.transform = 'translateY(0)';
     }, 300);
 
     // Scroll animation for cards
