@@ -53,7 +53,7 @@ body {
 
 header.card {
     text-align: center;
-    background-color: var(--dark-purple);
+    background-color: var(--light-purple);
     color: var(--white);
     position: relative;
     overflow: hidden;
