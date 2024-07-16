@@ -53,6 +53,62 @@ header.card {
     background-color: var(--accent-color);
 }
 
+/* Add this to your existing CSS */
+
+header.card {
+    text-align: center;
+    background-color: var(--accent-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-content {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-brown);
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
+}
+
+@keyframes headerWave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.header-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: var(--accent-color);
+    animation: headerWave 3s ease-in-out infinite;
+}
+
+.header-wave::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+    width: 110%;
+    height: 100%;
+    background: var(--dark-brown);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
 .profile-image {
     width: 150px;
     height: 150px;
