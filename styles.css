@@ -53,11 +53,23 @@ body {
 
 header.card {
     text-align: center;
-    background-color: var(--light-purple);
+    background-color: var(--dark-purple);
     color: var(--white);
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+    padding: 3rem 2rem;
+}
+
+.code-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500"><text x="0" y="15" fill="rgba(255,255,255,0.1)" font-size="20">&lt;code&gt;</text><text x="0" y="40" fill="rgba(255,255,255,0.1)" font-size="20">  function() {</text><text x="0" y="65" fill="rgba(255,255,255,0.1)" font-size="20">    console.log("Hello, World!");</text><text x="0" y="90" fill="rgba(255,255,255,0.1)" font-size="20">  }</text><text x="0" y="115" fill="rgba(255,255,255,0.1)" font-size="20">&lt;/code&gt;</text></svg>');
+    opacity: 0.1;
+    animation: moveBackground 20s linear infinite, fadeInOut 10s ease-in-out infinite;
 }
 
 header.card:hover {
@@ -82,6 +94,7 @@ header.card:hover .header-content {
     margin: 0 auto 1rem;
     border: 5px solid var(--white);
     transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
 .profile-image:hover {
@@ -100,6 +113,14 @@ h1, h2, h3 {
 
 header h1 {
     color: var(--white);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    color: var(--light-gray);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -145,6 +166,41 @@ li:hover {
 .skills-list li:hover {
     background-color: var(--dark-purple);
     transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 500px 500px;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.05;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInUp {
