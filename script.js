@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Add this new code for header animation
+    const header = document.querySelector('header.card');
+    const headerBackground = header.querySelector('.header-background');
+    const headerContent = header.querySelector('.header-content');
+
+    setTimeout(() => {
+        headerBackground.style.transform = 'translateY(0)';
+        setTimeout(() => {
+            headerContent.style.opacity = '1';
+            headerContent.style.transform = 'translateY(0)';
+        }, 500);
+    }, 300);
+    
     const cards = document.querySelectorAll('.card');
     
     const observer = new IntersectionObserver((entries) => {
