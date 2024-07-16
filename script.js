@@ -1,53 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Add this new code for header animation
     const header = document.querySelector('header.card');
-    const headerBackground = header.querySelector('.header-background');
-    const headerContent = header.querySelector('.header-content');
-
-    setTimeout(() => {
-        headerBackground.style.transform = 'translateY(0)';
-        setTimeout(() => {
-            headerContent.style.opacity = '1';
-            headerContent.style.transform = 'translateY(0)';
-        }, 500);
-    }, 300);
-    
     const cards = document.querySelectorAll('.card');
     
+    // Header animation
+    setTimeout(() => {
+        header.style.opacity = '1';
+        header.style.transform = 'translateY(0)';
+    }, 300);
+
+    // Scroll animation for cards
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                
-                const heading = entry.target.querySelector('h2');
-                if (heading) {
-                    heading.style.opacity = '1';
-                    heading.style.transform = 'translateY(0)';
-                }
-                
-                const listItems = entry.target.querySelectorAll('li');
-                listItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateX(0)';
-                    }, index * 100);
-                });
+                entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
     cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        observer.observe(card);
-    });
-
-    // Parallax effect for background
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.pageYOffset;
-        document.querySelector('.background').style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        if (card !== header) {
+            observer.observe(card);
+        }
     });
 
     // Skill tags random movement
@@ -62,5 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         tag.addEventListener('mouseout', () => {
             tag.style.transform = 'translate(0, 0) rotate(0) scale(1)';
         });
+    });
+
+    // Parallax effect for background
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        document.querySelector('.background').style.transform = `translateY(${scrollPosition * 0.5}px)`;
     });
 });
