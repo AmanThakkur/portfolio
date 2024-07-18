@@ -53,23 +53,31 @@ body {
 
 header.card {
     text-align: center;
-    background-color: var(--light-purple);
     color: var(--white);
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     padding: 3rem 2rem;
+    background-image: url('./background-header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.code-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500"><text x="0" y="15" fill="rgba(255,255,255,0.1)" font-size="20">&lt;code&gt;</text><text x="0" y="40" fill="rgba(255,255,255,0.1)" font-size="20">  function() {</text><text x="0" y="65" fill="rgba(255,255,255,0.1)" font-size="20">    console.log("Hello, World!");</text><text x="0" y="90" fill="rgba(255,255,255,0.1)" font-size="20">  }</text><text x="0" y="115" fill="rgba(255,255,255,0.1)" font-size="20">&lt;/code&gt;</text></svg>');
-    opacity: 0.1;
-    animation: moveBackground 20s linear infinite, fadeInOut 10s ease-in-out infinite;
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out;
+}
+
+header.card:hover .header-content {
+    transform: translateY(-5px);
+}
+
+header.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
 header.card:hover {
@@ -114,12 +122,13 @@ h1, h2, h3 {
 header h1 {
     color: var(--white);
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 header p {
     color: var(--light-gray);
     max-width: 600px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     margin: 0 auto;
 }
 
